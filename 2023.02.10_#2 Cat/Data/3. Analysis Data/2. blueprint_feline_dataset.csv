@@ -1,0 +1,139 @@
+Variables,Code,Factor,Key
+seeks_physical_contact_people,i1,Factor 5,1
+Opens_doors,i2,#N/A,
+Rests _in_secure_places,i3,#N/A,
+Reacts_to_video_TV,i4,Factor 4,1
+Refuses_litter_box_dirty,i5,#N/A,
+Freezes_examined_veterinarian,i6,Factor 1,-1
+Seems_confident,i7,Factor 1,1
+comfortable_social_gatherings,i8,Factor 1,1
+easily_scared_things_sounds,i9,Factor 1,-1
+Defecates_inappropriate_places,i10,#N/A,
+Unexpectedly_scratches _bites,i11,Factor 2,1
+greets_unfamiliar_children,i12,Factor 1,1
+Enjoys_tearing_cardboard,i13,Factor 6,1
+Runs_ hides_noise_inside,i14,Factor 1,-1
+Runs_hide_noise_outside,i15,Factor 1,-1
+Asks_in_out_ rooms,i16,#N/A,
+Freezes_nothing visible,i17,Factor 6,1
+Tries_wake_up,i18,#N/A,
+exhibits_bursts_running,i19,#N/A,
+Talks_to_people,i20,Factor 5,1
+increased_activity_morning,i21,#N/A,
+destroys_left_alone,i22,Factor 6,1
+Reacts_catnip,i23,#N/A,
+Chases_animals,i24,Factor 4,1
+purrs_petted,i25,Factor 5,1
+scratch_bite_human_possession_prey,i26,#N/A,
+comfortable_familiar_children,i27,Factor 1,1
+Growls_hisses_familiar_cat_staring,i28,Factor 3,-1
+scratch_bite_familiar_dogs,i29,Factor 7,-1
+Growls_hisses_examined_veterinarian,i30,Factor 2,1
+Growls_hisses_unfamiliar_dogs,i31,Factor 7,-1
+lie_things_used_people,i32,#N/A,
+excited_new_toys,i33,Factor 4,1
+Runs_while_playing,i34,Factor 4,1
+Greets_unfamiliar_cats,i35,Factor 3,1
+Growls_hisses_familiar_dogs,i36,Factor 7,-1
+restlessness_home_modified,i37,Factor 1,1
+eats_house_plants,i38,Factor 6,1
+eye_contact_familiar_people,i39,#N/A,
+Scratches_inappropriate_objects,i40,Factor 6,1
+scratch_bite_petted_base_tail,i41,Factor 2,1
+hallway_household_leave,i42,Factor 5,1
+not_want_use_same_litter_box,i43,Factor 3,-1
+wrong_targeted_aggression,i44,#N/A,
+Enjoys_jumping_high,i45,Factor 4,1
+restlessness_member_household_affection_person,i46,#N/A,
+Gets_excite_small_animals_window,i47,Factor 4,1
+scratch_bite_petted_belly,i48,Factor 2,1
+Carries_toy,i49,Factor 4,1
+listens_everything_you_say,i50,Factor 5,1
+playing_chases_household_members,i51,#N/A,
+Growls_hisses_nails_clipped,i52,Factor 2,1
+Growls_hisses_medicine_familiar,i53,Factor 2,1
+Chases_imaginary_objects,i54,#N/A,
+scratch_bite_bathed,i55,Factor 2,1
+Growls_ hisses_bathed,i56,Factor 2,1
+increased_activity_evening,i57,#N/A,
+Runs_unfamiliar_cats,i58,Factor 1,-1
+scratch_bite_brushed,i59,Factor 2,1
+Reacts_similarly_situations,i60,#N/A,
+Stares_unfamiliar_people,i61,#N/A,
+self_mutilation,i62,#N/A,
+investigates_new_objects,i63,#N/A,
+Growls_hisses_approached_familiar_cat_while_eating,i64,Factor 3,-1
+scratch_bite_unfamiliar_dogs,i65,Factor 7,-1
+restlessness_other_cats_fight,i66,Factor 3,-1
+excessive_ grooming,i67,#N/A,
+restlessness_unfamiliar_objects,i68,Factor 1,-1
+Plays_fetch,i69,#N/A,
+Gets_along _with_cats,i70,Factor 3,1
+Seeks_company_other_cats,i71,Factor 3,1
+baby_cry_check,i72,#N/A,
+Growls_hisses_brushed,i73,Factor 2,1
+Chase_tail,i74,#N/A,
+scratch_bite_examined_veterinarian,i75,Factor 2,1
+Rests_warm_appliances,i76,#N/A,
+scratch_bite_nails_clipped,i77,Factor 2,1
+greets_kittens,i78,Factor 3,1
+Moves_elegantly,i79,Factor 4,1
+scratch_bite _medicine_familiar_person,i80,Factor 2,1
+Hides_household_member_leave,i81,#N/A,
+Urinates_inappropriate,i82,#N/A,
+Escapes_unfamiliar_people,i83,Factor 1,-1
+Is_persevering,i84,#N/A,
+Stalks_moving_objects,i85,Factor 4,1
+meowing _left_alone,i86,#N/A,
+Sprays_indoors,i87,#N/A,
+adapts_changes,i88,Factor 1,1
+Squirms_picked_ held_arms,i89,#N/A,
+Brings_prey_animals,i90,#N/A,
+Enjoys_playing_cats,i91,Factor 3,1
+Runs_unfamiliar_dogs,i92,Factor 7,-1
+waiting_household_member_arrives,i93,Factor 5,1
+sudden_licking_chewing_body,i94,#N/A,
+Comes_called,i95,Factor 5,1
+Escapes_threatened_familiar_cat,i96,#N/A,
+Chews_cables,i97,Factor 6,1
+Reacts_different_events_vocalizing,i98,Factor 5,1
+scratch_bite_familiar_cat_hissing,i99,Factor 3,-1
+Growls_hisses_petted_tail,i100,Factor 2,1
+Chews_plastics,i101,#N/A,
+Growls_hisses_unfamiliar_person_pet,i102,Factor 2,1
+Growls_hisses_unfamiliar_children,i103,#N/A,
+Chase_shadows,i104,Factor 4,1
+escape_home,i105,#N/A,
+comfortable_petted_unfamiliar_people,i106,Factor 1,1
+greets_unfamiliar_adults,i107,Factor 1,1
+Active,i108,Factor 4,1
+Prefers_types_cat_litter,i109,#N/A,
+restlessness_member_household_affection_another_pet,i110,#N/A,
+Seeks_physical_contact_other_cats,i111,Factor 3,1
+Growls_hisses_approached_familiar_cat_resting,i112,Factor 3,-1
+Friendly_unfamiliar_dogs,i113,Factor 7,1
+Growls_hisses_approached_human_possession_of_prey,i114,#N/A,
+finds_new_ways_get_attention,i115,Factor 5,1
+learns_associate_things,i116,#N/A,
+Concentration_not_disturbed,i117,#N/A,
+Sucks_chews_fabrics,i118,#N/A,
+Growls_hisses_unfamiliar_adults,i119,#N/A,
+Purrs_sitting_lap,i120,Factor 5,1
+Chases_bite_moving_legs,i121,#N/A,
+not_recognize_familiar_cat_if_smells_odd,i122,#N/A,
+Kneads_objects,i123,#N/A,
+Squirms_picked_to_lap,i124,#N/A,
+substrate_preference_inappro,i125,#N/A,
+interactive_play_people,i126,Factor 4,1
+Repeats_meaningless_movements,i127,#N/A,
+comfortable_playing _unfamiliar_people,i128,Factor 1,1
+Walks_tail_upright,i129,#N/A,
+not_approach_people_right_away,i130,Factor 1,-1
+Rests_elevated_places,i131,Factor 4,1
+comfortable_unfamiliar_places,i132,Factor 1,1
+responds_commands,i133,#N/A,
+Picky,i134,#N/A,
+Asks_food,i135,#N/A,
+restlessness_household_member_leave,i136,Factor 5,1
+exited_other_pets,i137,Factor 4,1
+Human_oriented,i138,Factor 5,1

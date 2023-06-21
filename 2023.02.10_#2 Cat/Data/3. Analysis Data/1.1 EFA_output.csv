@@ -1,0 +1,141 @@
+,Factor 1,Factor 2,Factor 3,Factor 4,Factor 5,Factor 6,Factor 7,Uniqueness
+Escapes_unfamiliar_people,-0.932,,,,,,,0.32
+comfortable_social_gatherings,0.906,,,,,,,0.315
+comfortable_petted_unfamiliar_people,0.863,,,,,,,0.315
+greets_unfamiliar_adults,0.859,,,,,,,0.336
+comfortable_playing _unfamiliar_people,0.841,,,,,,,0.339
+not_approach_people_right_away,-0.795,,,,,,,0.481
+greets_unfamiliar_children,0.788,,,,,,,0.41
+easily_scared_things_sounds,-0.653,,,,,,,0.568
+comfortable_unfamiliar_places,0.629,,,,,,,0.561
+Runs_ hides_noise_inside,-0.626,,,,,,,0.584
+comfortable_familiar_children,0.567,,,,,,,0.593
+Freezes_examined_veterinarian,-0.531,,,,,,,0.717
+Runs_unfamiliar_dogs,-0.472,,,,,,0.387,0.615
+restlessness_unfamiliar_objects,-0.458,,,,,,,0.688
+Runs_unfamiliar_cats,-0.439,,,,,,,0.722
+Runs_hide_noise_outside,-0.439,,,,,,,0.797
+adapts_changes,0.401,,,,,,,0.693
+Seems_confident,0.385,,,,,,,0.696
+restlessness_home_modified,-0.383,,,,,,,0.696
+scratch_bite_nails_clipped,,0.7,,,,,,0.522
+Growls_hisses_nails_clipped,,0.66,,,,,,0.57
+scratch_bite _medicine_familiar_person,,0.659,,,,,,0.547
+Growls_hisses_medicine_familiar,,0.652,,,,,,0.563
+Growls_hisses_brushed,,0.624,,,,,,0.642
+Growls_ hisses_bathed,,0.605,,,,,,0.577
+scratch_bite_examined_veterinarian,,0.573,,,,,,0.663
+scratch_bite_brushed,,0.572,,,,,,0.661
+Growls_hisses_petted_tail,,0.549,,,,,,0.711
+scratch_bite_petted_belly,,0.537,,,,,,0.657
+scratch_bite_petted_base_tail,,0.532,,,,,,0.71
+scratch_bite_bathed,,0.529,,,,,,0.653
+Unexpectedly_scratches _bites,,0.501,,,,,,0.702
+Growls_hisses_examined_veterinarian,,0.488,,,,,,0.705
+Growls_hisses_unfamiliar_person_pet,,0.461,,,,,,0.631
+Gets_along _with_cats,,,-0.675,,,,,0.521
+Enjoys_playing_cats,,,-0.659,,,,,0.384
+Growls_hisses_familiar_cat_staring,,,0.653,,,,,0.527
+Seeks_company_other_cats,,,-0.651,,,,,0.497
+Growls_hisses_approached_familiar_cat_resting,,,0.591,,,,,0.599
+restlessness_other_cats_fight,,,0.543,,,,,0.714
+Seeks_physical_contact_other_cats,,,-0.535,,,,,0.617
+scratch_bite_familiar_cat_hissing,,,0.516,,,,,0.643
+Greets_unfamiliar_cats,,,-0.415,,,,,0.644
+greets_kittens,,,-0.39,,,,,0.65
+not_want_use_same_litter_box,,,0.372,,,,,0.847
+Human_oriented,,,0.37,,0.469,,,0.646
+Growls_hisses_approached_familiar_cat_while_eating,,,0.359,,,,,0.826
+Enjoys_jumping_high,,,,0.556,,,,0.708
+Active,,,,0.539,,,,0.616
+Stalks_moving_objects,,,,0.523,,,,0.683
+Chases_animals,,,,0.523,,,,0.764
+excited_new_toys,,,,0.492,,,,0.672
+Gets_excite_small_animals_window,,,,0.472,,,,0.781
+Runs_while_playing,,,,0.456,,,,0.654
+Carries_toy,,,,0.435,,,,0.721
+Rests_elevated_places,,,,0.415,,,,0.837
+exited_other_pets,,,,0.413,,,,0.826
+Chase_shadows,,,,0.398,,,,0.821
+Moves_elegantly,,,,0.377,,,,0.869
+interactive_play_people,,,,0.366,,,,0.715
+Reacts_to_video_TV,,,,0.353,,,,0.83
+listens_everything_you_say,,,,,0.55,,,0.634
+Talks_to_people,,,,,0.528,,,0.727
+Comes_called,,,,,0.493,,,0.736
+seeks_physical_contact_people,,,,,0.475,,,0.677
+Reacts_different_events_vocalizing,,,,,0.433,,,0.763
+purrs_petted,,,,,0.419,,,0.815
+restlessness_household_member_leave,,,,,0.413,,,0.747
+waiting_household_member_arrives,,,,,0.411,,,0.723
+hallway_household_leave,,,,,0.385,,,0.734
+finds_new_ways_get_attention,,,,,0.384,,,0.613
+Purrs_sitting_lap,,,,,0.354,,,0.867
+Enjoys_tearing_cardboard,,,,,,0.385,,0.807
+destroys_left_alone,,,,,,0.384,,0.84
+eats_house_plants,,,,,,0.378,,0.85
+Freezes_nothing visible,,,,,,0.365,,0.79
+Chews_cables,,,,,,0.355,,0.874
+Scratches_inappropriate_objects,,,,,,0.35,,0.856
+Growls_hisses_unfamiliar_dogs,,,,,,,0.707,0.443
+Friendly_unfamiliar_dogs,,,,,,,-0.691,0.363
+scratch_bite_unfamiliar_dogs,,,,,,,0.656,0.47
+Growls_hisses_familiar_dogs,,,,,,,0.62,0.511
+scratch_bite_familiar_dogs,,,,,,,0.594,0.547
+Opens_doors,,,,,,,,0.86
+Rests _in_secure_places,,,,,,,,0.876
+Refuses_litter_box_dirty,,,,,,,,0.844
+Defecates_inappropriate_places,,,,,,,,0.908
+Asks_in_out_ rooms,,,,,,,,0.886
+Tries_wake_up,,,,,,,,0.858
+exhibits_bursts_running,,,,,,,,0.67
+increased_activity_morning,,,,,,,,0.964
+Reacts_catnip,,,,,,,,0.978
+scratch_bite_human_possession_prey,,,,,,,,0.864
+lie_things_used_people,,,,,,,,0.813
+eye_contact_familiar_people,,,,,,,,0.877
+wrong_targeted_aggression,,,,,,,,0.863
+restlessness_member_household_affection_person,,,,,,,,0.863
+playing_chases_household_members,,,,,,,,0.736
+Chases_imaginary_objects,,,,,,,,0.812
+increased_activity_evening,,,,,,,,0.945
+Reacts_similarly_situations,,,,,,,,0.967
+Stares_unfamiliar_people,,,,,,,,0.89
+self_mutilation,,,,,,,,0.942
+investigates_new_objects,,,,,,,,0.705
+excessive_ grooming,,,,,,,,0.931
+Plays_fetch,,,,,,,,0.768
+baby_cry_check,,,,,,,,0.711
+Chase_tail,,,,,,,,0.908
+Rests_warm_appliances,,,,,,,,0.943
+Hides_household_member_leave,,,,,,,,0.898
+Urinates_inappropriate,,,,,,,,0.883
+Is_persevering,,,,,,,,0.811
+meowing _left_alone,,,,,,,,0.813
+Sprays_indoors,,,,,,,,0.963
+Squirms_picked_ held_arms,,,,,,,,0.759
+Brings_prey_animals,,,,,,,,0.895
+sudden_licking_chewing_body,,,,,,,,0.906
+Escapes_threatened_familiar_cat,,,,,,,,0.874
+Chews_plastics,,,,,,,,0.897
+Growls_hisses_unfamiliar_children,,,,,,,,0.687
+escape_home,,,,,,,,0.887
+Prefers_types_cat_litter,,,,,,,,0.91
+restlessness_member_household_affection_another_pet,,,,,,,,0.844
+Growls_hisses_approached_human_possession_of_prey,,,,,,,,0.906
+learns_associate_things,,,,,,,,0.804
+Concentration_not_disturbed,,,,,,,,0.878
+Sucks_chews_fabrics,,,,,,,,0.936
+Growls_hisses_unfamiliar_adults,,,,,,,,0.754
+Chases_bite_moving_legs,,,,,,,,0.914
+not_recognize_familiar_cat_if_smells_odd,,,,,,,,0.837
+Kneads_objects,,,,,,,,0.942
+Squirms_picked_to_lap,,,,,,,,0.748
+substrate_preference_inappro,,,,,,,,0.89
+Repeats_meaningless_movements,,,,,,,,0.895
+Walks_tail_upright,,,,,,,,0.905
+responds_commands,,,,,,,,0.891
+Picky,,,,,,,,0.939
+Asks_food,,,,,,,,0.904
+,,,,,,,,
+Note.  Applied rotation method is promax.,,,,,,,,

@@ -3,7 +3,6 @@ library(tidyverse)
 library(rtweet)
 library(tidytext)
 library(wordcloud2)
-library(ggplot2)
 
 ## auth
 auth <- rtweet_app("AAAAAAAAAAAAAAAAAAAAALuoFQEAAAAAthXYcI8ytuRLG9WYoUdWeATLow4%3DlMWBaUt1Q3CBmigtHObJ7Va43qAlBAUJmZzEJNW4VAfAD1MgIA")

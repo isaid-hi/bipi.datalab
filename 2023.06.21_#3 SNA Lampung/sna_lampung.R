@@ -5,11 +5,15 @@ library(tidytext)
 library(wordcloud2)
 
 ## auth
-auth <- rtweet_app("AAAAAAAAAAAAAAAAAAAAALuoFQEAAAAAthXYcI8ytuRLG9WYoUdWeATLow4%3DlMWBaUt1Q3CBmigtHObJ7Va43qAlBAUJmZzEJNW4VAfAD1MgIA")
+# api <- "gnb1klq6dlCUafM1QrBK3sl1g"
+# key_secret <- "oWEG29PfSQhsYG0ngpe46LLeNuNFmsfr5XAO9fLLxq7ke2QKBq"
+# bearer_token <- "AAAAAAAAAAAAAAAAAAAAAHpxoQEAAAAAxnkQz2xHQOPd18Ybb05WGcg8ujM%3Dm9MmIGEkWMcUgtdWVyTkjMfqAqMer1W5jPnL7oAmEvaI5NKexq"
+source("config.R")
+auth <- rtweet_app(tweet_bearer_token)
 
 ## search tweet
 #df_tw <- search_tweets("lampung", token = auth, n = 500000, since = "2023-04-06", lang="id")
-df_tw3 <- search_tweets("lampung", token = auth, n = 500000, since = "2023-04-06", lang="id")
+df_tw3 <- search_tweets("lampung", token = auth, n = 500000, since_id = "1655462846938103809", lang="id")
 ## mention_screen_name
 mention_uname <- vector()
 for (i in 1:nrow(df_tw)) {
@@ -112,3 +116,12 @@ E(sna.lampung.igraph)$sentiment <- sentiment_all$sentiment
 
 ## write graph
 write_graph(simplify(sna.lampung.igraph), "lampung.gml", format = "gml")
+
+
+#### test
+df3 <- get_timeline("lampung", 
+              n = 10, 
+              language = 'id',
+              since = '2023-05-09', 
+              until = '2023-05-10',
+              token = auth)

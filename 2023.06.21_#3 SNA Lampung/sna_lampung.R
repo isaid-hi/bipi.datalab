@@ -5,9 +5,6 @@ library(tidytext)
 library(wordcloud2)
 
 ## auth
-# api <- "gnb1klq6dlCUafM1QrBK3sl1g"
-# key_secret <- "oWEG29PfSQhsYG0ngpe46LLeNuNFmsfr5XAO9fLLxq7ke2QKBq"
-# bearer_token <- "AAAAAAAAAAAAAAAAAAAAAHpxoQEAAAAAxnkQz2xHQOPd18Ybb05WGcg8ujM%3Dm9MmIGEkWMcUgtdWVyTkjMfqAqMer1W5jPnL7oAmEvaI5NKexq"
 source("config.R")
 auth <- rtweet_app(tweet_bearer_token)
 

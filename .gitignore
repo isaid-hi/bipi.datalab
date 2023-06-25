@@ -2,4 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rproj
 config.R
+temp_file/

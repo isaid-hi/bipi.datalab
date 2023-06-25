@@ -1,9 +1,10 @@
 # libraries
-library(googleway)
 library(tidyverse)
 library(hereR)
 library(leaflet)
 library(sf)
+library(mapview)
+# library(sp)
 
 # source
 source("config.R")
@@ -22,7 +23,7 @@ hospital_sf <- st_as_sf(x = hospitals,
   set_key(here_api_key)
   
   ## build isoline ----
-    ## isoline untuk semua hospital ----
+    ### isoline untuk semua hospital ----
     isochrones_all <- isoline(
       poi = hospital_sf,
       range = seq(10, 30, 10) * 60,
@@ -31,49 +32,58 @@ hospital_sf <- st_as_sf(x = hospitals,
     ) %>%
       mutate(name = paste0((range - 600) / 60," to ", range / 60, " mins"))
 
+  ## grouping polygon yang mau dimerge
+  isochrones_all <- isochrones_all  %>%
+    group_by(rank) %>%
+    summarise()
+
   ## convert isochrone to spatial polygon ----
   isochrones_all.sp <- as(isochrones_all, "Spatial")
 
   ## reverse layer order
-isochrones_rev.sp <- isochrones_all.sp
-isochrones_rev.sp@data <- rev(isochrones_rev.sp@data)
-isochrones_rev.sp@polygons <- rev(isochrones_rev.sp@polygons)
-isochrones_rev.sp$name <- rev(isochrones_rev.sp$name)
-
-isochrone_select <- spTransform(isochrones_rev.sp,
-                                CRS("+proj=longlat +datum=WGS84 +no_defs"))
-
+  isochrones_all.sp@data <- rev(isochrones_all.sp@data)
+  isochrones_all.sp@polygons <- rev(isochrones_all.sp@polygons)
+  isochrones_all.sp$name <- rev(isochrones_all.sp$name)
+  isochrones_all.sp@data$name <- c("20 to 30 mins","10 to 20 mins","0 to 10 mins")
+  
   ## Create a color palette for the first isochrone catchment areas ----
   iso_all.colors <- c("#c6dbef", "#4292c6", "#08306b")
   iso_all.pal <- colorFactor(iso_all.colors, isochrones_all.sp@data$name)
   
 # plot ----
+  ## prepare jawg map
+  jawg_url <- "https://{s}.tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}"
+  accessToken <- jawg_token
   ## semua hospital digabung ----
-  leaflet() %>% 
-    addProviderTiles("CartoDB.Positron", group="Greyscale") %>% 
-    addPolygons(data = isochrones_rev.sp,
+  m <- leaflet() %>% 
+    addTiles(paste0("https://{s}.tile.jawg.io/jawg-matrix/{z}/{x}/{y}{r}.png?access-token=",jawg_token)) %>%
+    addPolygons(data = isochrones_all.sp,
                 fill=TRUE,
-                fillColor = ~iso_all.pal(isochrones_rev.sp@data$name),
+                fillColor = ~iso_all.pal(isochrones_all.sp@data$name),
                 fillOpacity=0.35,
                 stroke=TRUE,
                 color = "black",
                 weight=0.5, 
-                popup = isochrones_rev.sp@data$name,
+                popup = isochrones_all.sp@data$name,
                 group = "Catchment Area") %>%  
-    addCircles(hospitals$Longitude,
+    # addCircles(hospitals$Longitude,
+    #            hospitals$Latitude,
+    #            radius = 5,
+    #            opacity = 1,
+    #            group = "Hospitals") %>%
+    addMarkers(hospitals$Longitude,
                hospitals$Latitude,
-               radius = 5,
-               opacity = 1,
-               group = "Hospitals") %>%
+               group = "Hospitals",
+               icon = list(
+                 iconUrl = "2023.06.24_#4 Hospital Access/hospital-icon.png",
+                 iconSize = c(15,21)
+               )) %>%
+    setView(lat = -6.719584943220994,
+            lng = 106.80740049683965,
+            zoom = 12)
+m
     
-    # Add legends and layer control
-    addLegend("bottomleft",
-              values = isochrones_rev.sp@data$name,
-              pal = iso_all.pal, 
-              opacity = 0.35,
-              title = "Jarak waktu tempuh Rumah Sakit",
-              group = "All") %>%
-    addLayersControl(options = layersControlOptions(collapsed = FALSE),
-                     overlayGroups = c("Catchment Area",
-                                       "Hospitals"))
+# save map ----
+  saveWidget(m, "temp.html", selfcontained=TRUE)
+  webshot2::webshot("temp.html", file="Rplot4.png", cliprect="viewport") 
   

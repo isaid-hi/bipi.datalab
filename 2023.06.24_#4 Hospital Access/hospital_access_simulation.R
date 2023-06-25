@@ -59,3 +59,14 @@ leaflet() %>%
 #############
 leaflet() %>% 
   addTiles(paste0("https://{s}.tile.jawg.io/jawg-matrix/{z}/{x}/{y}{r}.png?access-token=",jawg_token))
+
+############ puskesmas
+leaflet() %>% 
+  addTiles(paste0("https://{s}.tile.jawg.io/jawg-matrix/{z}/{x}/{y}{r}.png?access-token=",jawg_token)) %>%
+  addMarkers(puskesmas$Longitude,
+             puskesmas$Latitude,
+             label = puskesmas$Name,
+             icon = list(
+               iconUrl = "2023.06.24_#4 Hospital Access/puskesmas_icon.png",
+               iconSize = c(15,15)
+             ))

@@ -47,13 +47,10 @@ hospital_sf <- st_as_sf(x = hospitals,
   isochrones_all.sp@data$name <- c("20 to 30 mins","10 to 20 mins","0 to 10 mins")
   
   ## Create a color palette for the first isochrone catchment areas ----
-  iso_all.colors <- c("#c6dbef", "#4292c6", "#08306b")
+  iso_all.colors <- c("#edf3fa", "#316eb0", "#083685")
   iso_all.pal <- colorFactor(iso_all.colors, isochrones_all.sp@data$name)
   
 # plot ----
-  ## prepare jawg map
-  jawg_url <- "https://{s}.tile.jawg.io/{variant}/{z}/{x}/{y}{r}.png?access-token={accessToken}"
-  accessToken <- jawg_token
   ## semua hospital digabung ----
   m <- leaflet() %>% 
     addTiles(paste0("https://{s}.tile.jawg.io/jawg-matrix/{z}/{x}/{y}{r}.png?access-token=",jawg_token)) %>%
@@ -66,24 +63,20 @@ hospital_sf <- st_as_sf(x = hospitals,
                 weight=0.5, 
                 popup = isochrones_all.sp@data$name,
                 group = "Catchment Area") %>%  
-    # addCircles(hospitals$Longitude,
-    #            hospitals$Latitude,
-    #            radius = 5,
-    #            opacity = 1,
-    #            group = "Hospitals") %>%
     addMarkers(hospitals$Longitude,
                hospitals$Latitude,
                group = "Hospitals",
                icon = list(
-                 iconUrl = "2023.06.24_#4 Hospital Access/hospital-icon.png",
+                 iconUrl = "2023.06.24_#4 Hospital Access/hospital_icon.png",
                  iconSize = c(15,21)
                )) %>%
-    setView(lat = -6.719584943220994,
-            lng = 106.80740049683965,
+    setView(lat = -6.717868966247109,
+            lng = 106.73797696014125,
             zoom = 12)
+
 m
     
 # save map ----
-  saveWidget(m, "temp.html", selfcontained=TRUE)
-  webshot2::webshot("temp.html", file="Rplot4.png", cliprect="viewport") 
+  htmlwidgets::saveWidget(m, "temp.html", selfcontained=TRUE)
+  webshot2::webshot("temp.html", file="2023.06.24_#4 Hospital Access/n.m4.png", cliprect="viewport") 
   

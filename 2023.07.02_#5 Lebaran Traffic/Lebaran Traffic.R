@@ -13,7 +13,7 @@ library(googletraffic)
 source("config.R")
 
 # set here key
-set_key(here_secret)
+set_key(here_api_key)
 
 # data traffic from HERE
 traffic <- flow(
@@ -26,6 +26,8 @@ traffic <- flow(
 flows <- flow(
   aoi = aoi
 )
+
+flow(aoi, min_jam_factor = 0, url_only = FALSE)
 
 flows <- flows[order(flows$JF), ]
 rownames(flows) <- NULL

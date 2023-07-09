@@ -72,11 +72,11 @@ hospital_sf <- st_as_sf(x = hospitals,
                )) %>%
     setView(lat = -6.717868966247109,
             lng = 106.73797696014125,
-            zoom = 12)
+            zoom = 11)
 
 m
     
 # save map ----
   htmlwidgets::saveWidget(m, "temp.html", selfcontained=TRUE)
-  webshot2::webshot("temp.html", file="2023.06.24_#4 Hospital Access/n.m4.png", cliprect="viewport") 
+  webshot2::webshot("temp.html", file="2023.06.24_#4 Hospital Access/cover_page_11.png", cliprect="viewport") 
   

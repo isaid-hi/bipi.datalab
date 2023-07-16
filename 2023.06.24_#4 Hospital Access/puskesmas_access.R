@@ -66,7 +66,7 @@ m <- leaflet() %>%
   addMarkers(puskesmas$Longitude,
              puskesmas$Latitude,
              icon = list(
-               iconUrl = "2023.06.24_#4 Hospital Access/puskesmas_icon.png",
+               iconUrl = "2023.06.24_#4 Hospital Access/img/puskesmas_icon.png",
                iconSize = c(15,15)
              )) %>%
   setView(lat = -6.717868966247109,

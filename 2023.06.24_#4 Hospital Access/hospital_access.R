@@ -3,7 +3,6 @@ library(tidyverse)
 library(hereR)
 library(leaflet)
 library(sf)
-library(mapview)
 # library(sp)
 
 # source
@@ -67,16 +66,46 @@ hospital_sf <- st_as_sf(x = hospitals,
                hospitals$Latitude,
                group = "Hospitals",
                icon = list(
-                 iconUrl = "2023.06.24_#4 Hospital Access/hospital_icon.png",
+                 iconUrl = "2023.06.24_#4 Hospital Access/img/hospital_icon.png",
                  iconSize = c(15,21)
                )) %>%
-    setView(lat = -6.717868966247109,
-            lng = 106.73797696014125,
-            zoom = 11)
-
+    setView(lat = -6.6753644410483375,
+            lng = 106.77892924539358,
+            zoom = 13)
+   
 m
+
+  ## tambah plyline sungai cisadane ----
+  ### data
+    cisadane <- jsonlite::fromJSON("2023.06.24_#4 Hospital Access/data/sungai_cisadane.geojson")
+    cisadane2 <- jsonlite::fromJSON("2023.06.24_#4 Hospital Access/data/cisadane_stream1.geojson")
+ 
+    # switch coord: cisadane
+    coordinates_list <- cisadane$features$geometry$coordinates
+    switched_coordinates <- list(coordinates_list[[2]], coordinates_list[[1]], coordinates_list[[3]])
+    cisadane$features$geometry$coordinates <- switched_coordinates
     
+    #buat dataframe
+    cisadane <- do.call(rbind, lapply(cisadane$features$geometry$coordinates, as.data.frame))
+    cisadane2 <- do.call(rbind, lapply(cisadane2$features$geometry$coordinates, as.data.frame))
+    
+    #gabung keduanya
+    colnames(cisadane) <- c("lng","lat")
+    colnames(cisadane2) <- c("lng","lat")
+    m %>%
+      addTiles(paste0("https://{s}.tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=",jawg_token)) %>%
+      addPolylines(cisadane, lng = cisadane$lng, lat = cisadane$lat,
+                   color = "#2EFFBD",
+                   opacity = 1) %>%
+      addPolylines(cisadane2, lng = cisadane2$lng, lat = cisadane2$lat,
+                   color = "#2EFFBD",
+                   opacity = 1)
+
+    
+das_sf <- sf::st_read("2023.06.24_#4 Hospital Access/Batas_DAS_KLHK.shp")
+
+# -6.6753644410483375, 106.77892924539358
 # save map ----
   htmlwidgets::saveWidget(m, "temp.html", selfcontained=TRUE)
-  webshot2::webshot("temp.html", file="2023.06.24_#4 Hospital Access/cover_page_11.png", cliprect="viewport") 
+  webshot2::webshot("temp.html", file="2023.06.24_#4 Hospital Access/blackspot_tajur halang.png", cliprect="viewport") 
   

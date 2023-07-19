@@ -1,3 +1,3 @@
 # bipi.datalab
-Documentation of the analysis in BIPI Data Lab
-https://github.com/isaid-hi/bipi.datalab
+Documentation of the analysis in BIPI Data Lab.
+[Instagram page](https://www.instagram.com/bipi.datalab/)https://www.instagram.com/bipi.datalab/

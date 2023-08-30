@@ -1,0 +1,283 @@
+---
+title: "Item Analytics of the Grit and Conscientiousness"
+author: "Nursahid Assafaat"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    fig_caption: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+```
+
+# A Brief about the Background
+
+This document is intended to analyze the items of Grit and Conscientiousness *(Cons)*. Whether the items already good or not. Special for Grit items, it contains of several items that measure 3 domains: consistency *(CO)*, perseverance *(PE)*, and adaptability *(AD)*.
+
+The steps that will be done to do the item analysis:
+
+-   General checking and anomaly
+-   Cleaned data (remove anomaly, NAs, and fix the formatting if any)
+-   Item analysis (check item statistics)
+    -   Reliability analysis of those 4 domains (CO, PE, AD, and Cons) separately.
+    -   Internal consistency (item-total correlation)
+    -   Inter-item correlation
+    -   Confirmatory factor analysis
+    -   Exploratory factor analysis (as a helper)
+
+\newpage
+
+```{r lib, echo=FALSE, warning = FALSE, include=FALSE}
+library(tidyverse)
+library(lavaan)
+library(psych)
+```
+
+```{r data, echo=TRUE, warning=FALSE}
+dat <- readxl::read_excel("resource/Grit - Studi Kasus.xlsx")
+dat <- drop_na(dat)
+dat <- dat[6:43]
+dim(dat)
+names(dat)
+str(dat)
+```
+
+\newpage
+
+# Step 1: General checking and anomaly
+
+I'll check the anomaly using histogram. Since this is ordinal data, I wouldn't expect too much from the shape of histogram. Instead, I'll put my focus more on the value itself.
+
+```{r hist_CO, echo = TRUE, fig.cap = "\\label{hist_CO}Histograms of Consistency domain"}
+# CO
+par(mfrow = c(3,3))
+for (i in 1:8) {
+  hist(unlist(dat[,i]), main = names(dat[,i]), xlab = "Score")
+}
+```
+
+For the consistency domain, everything looks normal. The distribution didn't look very beautiful, but this is due the nature of likert scale.
+
+```{r hist_PE, echo = TRUE, fig.cap = "\\label{hist_PE}Histograms of Perseverenec domain"}
+# PE
+par(mfrow = c(3,4))
+for (i in 9:19) {
+  hist(unlist(dat[,i]), main = names(dat[,i]), xlab = "Score")
+}
+```
+
+Perseverence domain also looks normal. There's no any visible anomaly at this point.
+
+```{r hist_AD, echo = TRUE, fig.cap = "\\label{hist_AD}Histograms of Adaptability domain"}
+# AD
+par(mfrow = c(3,5))
+for (i in 20:32) {
+  hist(unlist(dat[,i]), main = names(dat[,i]), xlab = "Score")
+} # AD3 contains 8 value, which not supposed to be since Grit domains contains of likert 1 - 5
+```
+
+We can see bit strange thing for this one, the adaptability domain. First, x axis of the histogram of **AD3** have more value, up to 8. Simple checking can shows that indeed there's an 8 value in our data set, which next will be dropped from the data set.
+
+```{r check_8, echo = TRUE}
+which(dat == 8, arr.ind = TRUE)
+```
+
+Therefore, we can remove row 108 in the cleaning step.
+
+```{r hist_Cons, echo = TRUE, fig.cap = "\\label{hist_Cons}Histograms of Conscientiousness"}
+## Cons
+par(mfrow = c(2,3))
+for (i in 33:38) {
+  hist(unlist(dat[,i]), main = names(dat[,i]), xlab = "Score")
+}
+
+```
+
+For the conscientiousness, everything looks normal. The likert scale a bit different, its 1-7 instead of 1-5, but this is no problem et all.
+
+# Step 2: Cleaning
+
+In this cleaning process, there are 2 tasks: removing the row that contains an 8 value (108), and removing *NAs*.
+
+```{r cleaning}
+dat <- dat[-which(dat[,"AD3"] == 8),]
+dat <- tidyr::drop_na(dat)
+dim(dat)
+head(dat)
+```
+
+With this task executed, I can proceed to do statistical analysis for the items.
+
+# Step 3: Item analysis
+
+## Grit Domains
+
+```{r cfa1}
+cfa <- cfa(
+  "CO =~ lambda_1_1*CO1 + lambda_1_2*CO2 + lambda_1_3*CO3 + lambda_1_4*CO4 + lambda_1_5*CO5 + lambda_1_6*CO6 + lambda_1_7*CO7 + lambda_1_8*CO8
+  PE =~ lambda_2_1*PE1 + lambda_2_2*PE2 + lambda_2_3*PE3 + lambda_2_4*PE4 + lambda_2_5*PE5 + lambda_2_6*PE6 + lambda_2_7*PE7 + lambda_2_8*PE8 + lambda_2_9*PE9 + lambda_2_10*PE10 + lambda_2_11*PE11
+  AD =~ lambda_3_1*AD1 + lambda_3_2*AD2 + lambda_3_3*AD3 + lambda_3_4*AD4 + lambda_3_5*AD5 + lambda_3_6*AD6 + lambda_3_7*AD7 + lambda_3_8*AD8 + lambda_3_9*AD9 + lambda_3_10*AD10 + lambda_3_11*AD11 + lambda_3_12*AD12 + lambda_3_13*AD13",
+  data = dat,
+  estimator = "DWLS"
+)
+
+fit_indices <- fitMeasures(cfa)
+c(fit_indices["cfi"],
+fit_indices["tli"],
+fit_indices["rmsea"],
+fit_indices["srmr"]
+)
+
+summary(cfa, standardized = TRUE)
+
+semPlot::semPaths(cfa,
+                  whatLabels = "std",
+                  rotation = 2,
+                  sizeMan = 5,
+                  node.width = 1,
+                  edge.label.cex = .7)
+```
+
+From the fit indices and the chi-square, we can see that the model for the Grit hasn't fit yet. Therefore adjustment is required. For easier observation, we can use internal consistency and inter-item correlation
+
+## Reliability and Internal Consistency
+
+### Consistency domain
+
+```{r relCO1}
+relCO <- alpha(dat[1:8])
+relCO$total$raw_alpha
+relCO$item.stats
+```
+
+The internal consistency indicated that CO4, CO7, and CO8 are not eligible for the consistency domain
+
+```{r iicCO}
+cor(dat[,1:8])
+cor(dat[,1:8]) |> rowSums()
+
+```
+
+Interitem correlation indicates that CO1 also probably not eligible. To prove that, lets redo the reliability analysis
+
+#### Second reliability analysis after item dropped
+
+```{r relCO2}
+relCO <- alpha(dat[,c(1,2,3,5,6)])
+relCO$total$raw_alpha
+relCO$item.stats
+```
+
+This proves that CO1 also not eligible. Then I will also drop the item.
+
+### Perseverence domain
+
+Using the same method, let's see the result
+
+```{r relPE1}
+relPE <- alpha(dat[9:19])
+relPE$total$raw_alpha
+relPE$item.stats
+
+cor(dat[,9:19])
+cor(dat[,9:19]) |> rowSums()
+```
+
+We got item PE5, PE9, and PE11 probably dropped based on the suggestion of reliability analysis. But also, interitem correlation analysis suggest that PE1, and PE6 probably not eligible as well. The result:
+
+```{r relPE2}
+relPE <- alpha(dat[c(10,11,12,15,16,18)])
+relPE$total$raw_alpha
+relPE$item.stats
+
+cor(dat[,c(10,11,12,15,16,18)])
+cor(dat[,c(10,11,12,15,16,18)]) |> rowSums()
+```
+
+### Adaptability
+
+```{r relAD1}
+relAD <- alpha(dat[20:32])
+relAD$total$raw_alpha
+relAD$item.stats
+```
+
+With a lot of item and most of the item-total correlation is not vary, we need to rely the analysis to interitem correlation more.
+
+```{r relAD2}
+cor(dat[,20:32])
+cor(dat[,20:32]) |> rowSums()
+```
+
+We have these item possibly dropped: AD4, AD8, AD9, AD12, AD13. And the result:
+
+```{r relAD3}
+relAD <- alpha(dat[,c(20,21,22,24,25,26,29,30)])
+relAD$total$raw_alpha
+relAD$item.stats
+```
+
+### Final Grit model
+
+After some of the items are dropped, lets check the CFA once again with the new model
+
+```{r cfa2}
+cfa <- cfa(
+  "Factor1 =~ lambda_1_1*CO2 + lambda_1_2*CO3 + lambda_1_3*CO5 + lambda_1_4*CO6
+Factor2 =~ lambda_2_1*PE2 + lambda_2_2*PE3 + lambda_2_3*PE4 + lambda_2_4*PE7 + lambda_2_5*PE8 + lambda_2_6*PE10
+Factor3 =~ lambda_3_1*AD1 + lambda_3_2*AD2 + lambda_3_3*AD3 + lambda_3_4*AD5 + lambda_3_5*AD6 + lambda_3_6*AD7 + lambda_3_7*AD10 + lambda_3_8*AD11",
+  data = dat,
+  estimator = "DWLS"
+)
+
+fit_indices <- fitMeasures(cfa)
+c(fit_indices["cfi"],
+fit_indices["tli"],
+fit_indices["rmsea"],
+fit_indices["srmr"]
+)
+
+summary(cfa, standardized = TRUE)
+
+semPlot::semPaths(cfa,
+                  whatLabels = "std",
+                  rotation = 2,
+                  sizeMan = 5,
+                  node.width = 1,
+                  edge.label.cex = .7)
+```
+
+Now we have a better fit model compared to previous one. Let's proceed to the next one, conscientiousness.
+
+## Conscientiousness
+
+```{r relCons1}
+relCons <- alpha(dat[33:38])
+relCons$total$raw_alpha
+relCons$item.stats
+
+cor(dat[,33:38])
+cor(dat[,33:38]) |> rowSums()
+```
+
+This is shown already that Cons3 is the impostor. Let's drop it.
+
+```{r relCons2}
+relCons <- alpha(dat[c(33,34,36,37,38)])
+relCons$total$raw_alpha
+relCons$item.stats
+```
+
+Now all the items are good.
+
+\newpage
+
+# Summary
+
+In the end, here's the item last that fit to the model.
+
+-   CO: CO2, CO3, CO5, CO6
+-   PE: PE2, PE3, PE4, PE7, PE8, PE10
+-   AD: AD1, AD2, AD3, AD5, AD6, AD7, AD10, AD11
+-   Cons: Cons1, Cons2, Cons4, Cons5, Cons6

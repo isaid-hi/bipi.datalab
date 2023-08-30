@@ -51,7 +51,7 @@ sna.lampung %>%
   plain_tweets() -> sna.lampung.cleaned
 
 ## stopwords
-stopwords <- read.csv("stopwords_id.csv")
+stopwords <- read.csv("2023.06.21_#3 SNA Lampung/stopwords_id.csv")
   ### stopwords[nrow(stopwords)+1,1] <- ""
 
 # create token and apply stopwords
